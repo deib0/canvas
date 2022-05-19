@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas">
+    </canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = document.documentElement.clientWidth;
+        canvas.height = document.documentElement.clientHeight;
+        var isTouch = 'ontouchstart' in document.documentElement;//  判断触摸屏
+        var lastX;
+        var lastY;
+        if (isTouch) {                      //  判断设备是否是触摸平屏
+            canvas.ontouchmove = (e) => {
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY);
+                ctx.stroke();
+                ctx.lineWidth = 10;
+                ctx.strokeStyle = 'red';
+                ctx.lineCap = 'round';
+                lastX = e.touches[0].clientX;
+                lastY = e.touches[0].clientY;
+
+            }
+        } else {
+            var x = false;  //  用来检验鼠标抬起还是摁下
+            canvas.onmousedown = function (e) {   //  鼠标点击获得鼠标位置
+                x = true;
+                lastX = e.clientX;
+                lastY = e.clientY;
+            }
+            canvas.onmousemove = function (e) {
+                if (x) {
+                    ctx.beginPath();
+                    ctx.moveTo(lastX, lastY);   //  线的起点
+                    ctx.lineTo(e.clientX, e.clientY);  //  线的终点
+                    ctx.stroke();
+                    ctx.lineWidth = 10;   //  线粗
+                    ctx.strokeStyle = 'red';   //  线颜色
+                    ctx.lineCap = 'round';
+                    lastX = e.clientX;  //  实时更新起点位置
+                    lastY = e.clientY;
+                }
+
+            }
+            canvas.onmouseup = function () {   //  鼠标抬起停止画画
+                x = false;
+                console.log(x);
+            }
+        }
+
+        // =()=>
+    </script>
+</body>
+
+</html>

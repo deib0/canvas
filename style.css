@@ -14,6 +14,9 @@ body {
 #canvas {
     display: block;
 }
+#canvas:hover{
+    cursor:crosshair;
+}
 
 .color{
     position: absolute;

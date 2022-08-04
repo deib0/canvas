@@ -23,13 +23,23 @@
         <div class="strong"></div>
     </div>
     <script>
+        // 选择画笔颜色
         let color ='black'
-        const black = document.querySelector('.black')
-        const red = document.querySelector('.red')
-        const green = document.querySelector('.green')
         const colors = document.querySelector('.color')
         colors.addEventListener('click',(event)=>{
            color=event.target.classList[0]
+        })
+        // 选择画笔粗细
+        let lineWidth = 10
+        let lineWidthHash={
+            'slide':5,
+            'middle':10,
+            strong:20
+        }
+        const lineWidths =document.querySelector('.lineWidth')
+        lineWidths.addEventListener('click',(event)=>{
+           let attr=event.target.classList[0]
+           lineWidth=lineWidthHash[attr]
         })
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
@@ -44,7 +54,7 @@
                 ctx.moveTo(lastX, lastY);
                 ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY);
                 ctx.stroke();
-                ctx.lineWidth = 10;
+                ctx.lineWidth = lineWidth;
                 ctx.strokeStyle = color;
                 ctx.lineCap = 'round';
                 lastX = e.touches[0].clientX;
@@ -64,7 +74,7 @@
                     ctx.moveTo(lastX, lastY);   //  线的起点
                     ctx.lineTo(e.clientX, e.clientY);  //  线的终点
                     ctx.stroke();
-                    ctx.lineWidth = 10; //  线粗
+                    ctx.lineWidth = lineWidth; //  线粗
                     ctx.strokeStyle = color; //  线颜色
                     ctx.lineCap = 'round';
                     lastX = e.clientX;  //  实时更新起点位置

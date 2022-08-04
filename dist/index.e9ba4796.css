@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+#canvas {
+  display: block;
+}
+
+#canvas:hover {
+  cursor: crosshair;
+}
+
+.color {
+  margin-right: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.color > * {
+  float: right;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.lineWidth {
+  width: 100px;
+  position: absolute;
+  top: 30px;
+  right: 0;
+}
+
+.strong, .middle, .slide {
+  width: 80px;
+  margin: 10px;
+}
+
+.strong {
+  border-bottom: 20px solid #000;
+}
+
+.middle {
+  border-bottom: 10px solid #000;
+}
+
+.slide {
+  border-bottom: 5px solid #000;
+}
+
+.clear {
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 0 5px;
+  text-decoration: none;
+  display: inline-block;
+  position: absolute;
+  top: 105px;
+  right: 10px;
+}
+
+/*# sourceMappingURL=index.e9ba4796.css.map */

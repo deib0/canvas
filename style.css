@@ -24,22 +24,12 @@ body {
     top: 0px;
 }
 
-.color>div{
+.color>*{
     float: right;
     width: 20px;
     height: 20px;
     margin: 5px;
     border-radius: 4px;
-}
-
-.black{
-    background: #000;
-}
-.red{
-    background: red;
-}
-.green{
-    background: green;
 }
 .lineWidth{
     position: absolute;

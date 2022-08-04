@@ -16,6 +16,11 @@
         <div class="black"></div>
         <div class="red"></div>
         <div class="green"></div>
+        <div class="blue"></div>
+        <div class="yellow"></div>
+        <div class="orange"></div>
+        <div class="purple"></div>
+        <div class="grey"></div>
     </div>
     <div class="lineWidth">
         <div class="slide"></div>
@@ -26,6 +31,10 @@
         // 选择画笔颜色
         let color ='black'
         const colors = document.querySelector('.color')
+        const children =colors.children
+        for(let i=0;i<children.length;i++){
+            children[i].style.background=children[i].classList[0]
+        }
         colors.addEventListener('click',(event)=>{
            color=event.target.classList[0]
         })

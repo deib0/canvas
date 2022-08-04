@@ -38,3 +38,24 @@ body {
 .green{
     background: green;
 }
+.lineWidth{
+    position: absolute;
+    right: 0px;
+    top: 30px;
+    width: 100px;
+}
+.strong,
+.middle,
+.slide{
+    width: 80px;
+    margin: 10px;
+}
+.strong{
+    border-bottom: 20px solid #000;
+}
+.middle{
+    border-bottom: 10px solid #000;
+}
+.slide{
+    border-bottom: 5px solid #000;
+}

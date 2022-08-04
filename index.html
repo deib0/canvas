@@ -1,18 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>自制画板</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <canvas id="canvas">
     </canvas>
+    <div class="color">
+        <div class="black"></div>
+        <div class="red"></div>
+        <div class="green"></div>
+    </div>
     <script>
+        let color ='black'
+        const black = document.querySelector('.black')
+        const red = document.querySelector('.red')
+        const green = document.querySelector('.green')
+        const colors = document.querySelector('.color')
+        colors.addEventListener('click',(event)=>{
+           color=event.target.classList[0]
+        })
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = document.documentElement.clientWidth;
@@ -27,7 +40,7 @@
                 ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY);
                 ctx.stroke();
                 ctx.lineWidth = 10;
-                ctx.strokeStyle = 'red';
+                ctx.strokeStyle = color;
                 ctx.lineCap = 'round';
                 lastX = e.touches[0].clientX;
                 lastY = e.touches[0].clientY;
@@ -46,8 +59,8 @@
                     ctx.moveTo(lastX, lastY);   //  线的起点
                     ctx.lineTo(e.clientX, e.clientY);  //  线的终点
                     ctx.stroke();
-                    ctx.lineWidth = 10;   //  线粗
-                    ctx.strokeStyle = 'red';   //  线颜色
+                    ctx.lineWidth = 10; //  线粗
+                    ctx.strokeStyle = color; //  线颜色
                     ctx.lineCap = 'round';
                     lastX = e.clientX;  //  实时更新起点位置
                     lastY = e.clientY;
@@ -56,11 +69,8 @@
             }
             canvas.onmouseup = function () {   //  鼠标抬起停止画画
                 x = false;
-                console.log(x);
             }
         }
-
-        // =()=>
     </script>
 </body>
 
